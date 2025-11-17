@@ -25,6 +25,15 @@
   --bg-pointer-x: 50%;
   --bg-pointer-y: 30%;
   --bg-pointer-color-rgb: 79, 70, 229;
+  --liquid-shift-multiplier: 1;
+  --liquid-rotate-multiplier: 1;
+}
+
+@media (pointer: coarse) {
+  :root {
+    --liquid-shift-multiplier: 2.4;
+    --liquid-rotate-multiplier: 1.8;
+  }
 }
 
 html.theme-2 {
@@ -136,8 +145,12 @@ body.fast-heartbeat {
 
 body.tilt-enabled .hero-liquid {
   will-change: transform;
-  transform: translate3d(var(--tilt-shift-x), var(--tilt-shift-y), 0)
-    rotateX(var(--tilt-rotate-pitch)) rotateY(var(--tilt-rotate-roll));
+  transform: translate3d(
+      calc(var(--tilt-shift-x) * var(--liquid-shift-multiplier)),
+      calc(var(--tilt-shift-y) * var(--liquid-shift-multiplier)),
+      0)
+    rotateX(calc(var(--tilt-rotate-pitch) * var(--liquid-rotate-multiplier)))
+    rotateY(calc(var(--tilt-rotate-roll) * var(--liquid-rotate-multiplier)));
   transition: transform 0.25s ease;
 }
 
