@@ -132,6 +132,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const initPointerGlow = () => {
     if (!root || typeof window === "undefined") return;
 
+    const prefersFinePointer = window.matchMedia ? window.matchMedia("(pointer: fine)").matches : true;
+    if (!prefersFinePointer) return;
+
     const state = {
       x: 0.5,
       y: 0.3,
@@ -162,12 +165,6 @@ document.addEventListener("DOMContentLoaded", () => {
       updateFromPoint(event.clientX, event.clientY);
     };
 
-    const handleTouchMove = (event) => {
-      const touch = event.touches[0];
-      if (!touch) return;
-      updateFromPoint(touch.clientX, touch.clientY);
-    };
-
     const resetToCenter = () => {
       state.x = 0.5;
       state.y = 0.35;
@@ -175,9 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("touchmove", handleTouchMove, { passive: true });
     window.addEventListener("mouseleave", resetToCenter);
-    window.addEventListener("touchend", resetToCenter);
   };
 
   const initTiltMotion = () => {
