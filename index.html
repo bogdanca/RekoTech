@@ -18,10 +18,10 @@
                 <img src="assets/img/reko-tech-logo.svg" alt="Reko Tech logo" />
             </a>
             <nav class="nav desktop-nav">
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#experience">Experience</a>
-                <a href="#contact">Contact</a>
+                <a href="#about" data-i18n="nav_about">About</a>
+                <a href="#skills" data-i18n="nav_skills">Skills</a>
+                <a href="#experience" data-i18n="nav_experience">Experience</a>
+                <a href="#contact" data-i18n="nav_contact">Contact</a>
             </nav>
             <div class="header-actions">
                 <button class="menu-toggle" aria-label="Toggle navigation" aria-controls="mobileNav" aria-expanded="false">
@@ -29,7 +29,11 @@
                     <span class="menu-line"></span>
                     <span class="menu-line"></span>
                 </button>
-                <button class="theme-toggle" aria-label="Toggle theme"></button>
+                <div class="lang-toggle" role="group" aria-label="Language toggle">
+                    <button class="lang-btn active" type="button" data-lang="en" aria-pressed="true">GB</button>
+                    <button class="lang-btn" type="button" data-lang="ro" aria-pressed="false">RO</button>
+                </div>
+                <button class="theme-toggle" aria-label="Toggle theme" data-i18n-aria="theme_toggle"></button>
             </div>
         </div>
     </header>
@@ -40,11 +44,11 @@
                 <button class="mobile-nav-close" aria-label="Close navigation"></button>
             </div>
             <div class="mobile-nav-links">
-                <a href="#page-top">Home</a>
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#experience">Experience</a>
-                <a href="#contact">Contact</a>
+                <a href="#page-top" data-i18n="nav_home">Home</a>
+                <a href="#about" data-i18n="nav_about">About</a>
+                <a href="#skills" data-i18n="nav_skills">Skills</a>
+                <a href="#experience" data-i18n="nav_experience">Experience</a>
+                <a href="#contact" data-i18n="nav_contact">Contact</a>
             </div>
         </div>
     </div>
@@ -55,37 +59,37 @@
                 <div class="hero-grid">
                     <div class="hero-main">
                         <canvas class="hero-fluid hero-liquid"></canvas>
-                        <p class="hero-tag">IT Consultant · Front-End · ServiceNow · Cloud</p>
-                        <h1>IT professional turning complex problems into clean digital experiences.</h1>
-                        <p class="hero-sub">
+                        <p class="hero-tag" data-i18n="hero_tag">IT Consultant · Front-End · ServiceNow · Cloud</p>
+                        <h1 data-i18n="hero_title">IT professional turning complex problems into clean digital experiences.</h1>
+                        <p class="hero-sub" data-i18n="hero_sub">
                             I help businesses design, build, and maintain modern web, mobile, and enterprise
                             solutions. From UX/UI to front-end and SQL, and on‑premise infrastructure.
                         </p>
                         <div class="hero-actions">
-                            <a href="#contact" class="btn primary">Contact me</a>
-                            <a href="#experience" class="btn ghost">View 9 years of experience</a>
+                            <a href="#contact" class="btn primary" data-i18n="hero_cta_primary">Contact me</a>
+                            <a href="#experience" class="btn ghost" data-i18n="hero_cta_secondary">View 9 years of experience</a>
                         </div>
                         <div class="hero-meta">
-                            <span>9+ years in IT</span>
-                            <span>Web Developer &amp; Mobile</span>
-                            <span>Graphic Design &amp; Art</span>
+                            <span data-i18n="hero_meta_1">9+ years in IT</span>
+                            <span data-i18n="hero_meta_2">Web Developer &amp; Mobile</span>
+                            <span data-i18n="hero_meta_3">Graphic Design &amp; Art</span>
                         </div>
                     </div>
                     <aside class="hero-card">
                         <canvas class="hero-fluid hero-liquid"></canvas>
-                        <div class="hero-pill">Currently available for remote & on‑site work</div>
-                        <h2>Tech snapshot</h2>
+                        <div class="hero-pill" data-i18n="hero_pill">Currently available for remote & on‑site work</div>
+                        <h2 data-i18n="hero_card_title">Tech snapshot</h2>
                         <ul class="hero-list">
-                            <li>Web design, UX/UI, presentation websites</li>
-                            <li>Front end & SQL development</li>
-                            <li>WordPress, Shopify, custom integrations</li>
-                            <li>ServiceNow development & administration</li>
-                            <li>Data manipulation, Excel analysis, automation</li>
-                            <li>Mobile Applications Development</li>
-                            <li>Local IT, Service Desk and Customer Service</li>
-                            <li>Active Directory, Exchange, and other Microsoft products
-                            <li>Cloud Computing, AWS, Azure, and other cloud services</li></li>
-                            <li>Graphic Design and art</li>
+                            <li data-i18n="hero_li_1">Web design, UX/UI, presentation websites</li>
+                            <li data-i18n="hero_li_2">Front end &amp; SQL development</li>
+                            <li data-i18n="hero_li_3">WordPress, Shopify, custom integrations</li>
+                            <li data-i18n="hero_li_4">ServiceNow development &amp; administration</li>
+                            <li data-i18n="hero_li_5">Data manipulation, Excel analysis, automation</li>
+                            <li data-i18n="hero_li_6">Mobile Applications Development</li>
+                            <li data-i18n="hero_li_7">Local IT, Service Desk and Customer Service</li>
+                            <li data-i18n="hero_li_8">Active Directory, Exchange, and other Microsoft products</li>
+                            <li data-i18n="hero_li_9">Cloud Computing, AWS, Azure, and other cloud services</li>
+                            <li data-i18n="hero_li_10">Graphic Design and art</li>
                         </ul>
                     </aside>
                 </div>
@@ -93,16 +97,16 @@
 
             <section class="section" id="about">
                 <div class="section-header">
-                    <h2>About</h2>
-                    <p>9 years across web, infrastructure, and enterprise IT.</p>
+                    <h2 data-i18n="about_title">About</h2>
+                    <p data-i18n="about_sub">9 years across web, infrastructure, and enterprise IT.</p>
                 </div>
                 <div class="about-grid">
-                    <p>
+                    <p data-i18n="about_body_1">
                         Hello, my name is Bogdan Cameniță and I am an IT professional with 9+ years of hands‑on experience across software
                         development, IT operations, and digital transformation. I move comfortably between
                         design, code, and infrastructure and a background in Customer Service.
                     </p>
-                    <p>
+                    <p data-i18n="about_body_2">
                         My work ranges from crafting fast, responsive presentation websites and mobile
                         apps to configuring ServiceNow, Active Directory, Exchange, and business
                         applications. I focus on reliable delivery, clear communication, and solutions that
@@ -113,45 +117,45 @@
 
             <section class="section" id="skills">
                 <div class="section-header">
-                    <h2>Core skills</h2>
-                    <p>End‑to‑end IT delivery, from pixels to production.</p>
+                    <h2 data-i18n="skills_title">Core skills</h2>
+                    <p data-i18n="skills_sub">End‑to‑end IT delivery, from pixels to production.</p>
                 </div>
                 <div class="pill-grid">
                     <article class="pill-card">
-                        <h3>Web & Mobile</h3>
+                        <h3 data-i18n="skills_card1_title">Web &amp; Mobile</h3>
                         <ul>
-                            <li>Web design & UX/UI</li>
-                            <li>Front end & back end development</li>
-                            <li>Responsive presentation websites</li>
-                            <li>Phone apps & APIs</li>
+                            <li data-i18n="skills_card1_li1">Web design &amp; UX/UI</li>
+                            <li data-i18n="skills_card1_li2">Front end &amp; back end development</li>
+                            <li data-i18n="skills_card1_li3">Responsive presentation websites</li>
+                            <li data-i18n="skills_card1_li4">Phone apps &amp; APIs</li>
                         </ul>
                     </article>
                     <article class="pill-card">
-                        <h3>Platforms & Integrations</h3>
+                        <h3 data-i18n="skills_card2_title">Platforms &amp; Integrations</h3>
                         <ul>
-                            <li>WordPress, Shopify, custom themes</li>
-                            <li>ServiceNow development & administration</li>
-                            <li>REST integrations & automation</li>
-                            <li>Microsoft Exchange, AD, SaaS tools</li>
+                            <li data-i18n="skills_card2_li1">WordPress, Shopify, custom themes</li>
+                            <li data-i18n="skills_card2_li2">ServiceNow development &amp; administration</li>
+                            <li data-i18n="skills_card2_li3">REST integrations &amp; automation</li>
+                            <li data-i18n="skills_card2_li4">Microsoft Exchange, AD, SaaS tools</li>
                         </ul>
                     </article>
                     <article class="pill-card">
-                        <h3>Business & Data</h3>
+                        <h3 data-i18n="skills_card3_title">Business &amp; Data</h3>
                         <ul>
-                            <li>Financial app setup (e.g. SmartBill)</li>
-                            <li>Business application roll‑outs</li>
-                            <li>Excel power‑user, data analysis</li>
-                            <li>Data manipulation & reporting</li>  
+                            <li data-i18n="skills_card3_li1">Financial app setup (e.g. SmartBill)</li>
+                            <li data-i18n="skills_card3_li2">Business application roll‑outs</li>
+                            <li data-i18n="skills_card3_li3">Excel power‑user, data analysis</li>
+                            <li data-i18n="skills_card3_li4">Data manipulation &amp; reporting</li>  
                         </ul>
                     </article>
                     <article class="pill-card">
-                        <h3>IT Operations</h3>
+                        <h3 data-i18n="skills_card4_title">IT Operations</h3>
                         <ul>
-                            <li>Windows installation & licensing</li>
-                            <li>Asset management & inventory</li>
-                            <li>On‑prem & hybrid environments</li>
-                            <li>Monitoring, troubleshooting</li>
-                            <li>Local IT, Service Desk and Customer Service</li>
+                            <li data-i18n="skills_card4_li1">Windows installation &amp; licensing</li>
+                            <li data-i18n="skills_card4_li2">Asset management &amp; inventory</li>
+                            <li data-i18n="skills_card4_li3">On‑prem &amp; hybrid environments</li>
+                            <li data-i18n="skills_card4_li4">Monitoring, troubleshooting</li>
+                            <li data-i18n="skills_card4_li5">Local IT, Service Desk and Customer Service</li>
                         </ul>
                     </article>
                 </div>
@@ -159,25 +163,25 @@
 
             <section class="section" id="experience">
                 <div class="section-header">
-                    <h2>Experience</h2>
+                    <h2 data-i18n="experience_title">Experience</h2>
                 </div>
                 <div class="timeline">
                     <article class="timeline-item">
                         <div class="timeline-meta">
-                            <span class="timeline-period">Jan 2025 – Present</span>
-                            <span class="timeline-role">Senior Technical Engineer – Aurachain</span>
+                            <span class="timeline-period" data-i18n="exp1_period">Jan 2025 – Present</span>
+                            <span class="timeline-role" data-i18n="exp1_role">Senior Technical Engineer – Aurachain</span>
                         </div>
-                        <p>
+                        <p data-i18n="exp1_desc">
                             Operating the Aurachain low-code platform, troubleshooting and resolving
                             production incidents, and implementing applications on Aurachain.
                         </p>
                     </article>
                     <article class="timeline-item">
                         <div class="timeline-meta">
-                            <span class="timeline-period">Feb 2022 – May 2024</span>
-                            <span class="timeline-role">Senior Technical Engineer – Oracle Romania, Bucharest</span>
+                            <span class="timeline-period" data-i18n="exp2_period">Feb 2022 – May 2024</span>
+                            <span class="timeline-role" data-i18n="exp2_role">Senior Technical Engineer – Oracle Romania, Bucharest</span>
                         </div>
-                        <p>
+                        <p data-i18n="exp2_desc">
                             Part of the EMEA Fusion B2B Service team, covering Fusion Service Cloud components
                             and performance issues to ensure a smooth and reliable customer experience.
                             Worked with HCM, SCM, Finance and other Oracle Fusion Cloud applications.
@@ -185,10 +189,10 @@
                     </article>
                     <article class="timeline-item">
                         <div class="timeline-meta">
-                            <span class="timeline-period">Jul 2021 – Aug 2021</span>
-                            <span class="timeline-role">ServiceNow Developer – Infosys, Bucharest</span>
+                            <span class="timeline-period" data-i18n="exp3_period">Jul 2021 – Aug 2021</span>
+                            <span class="timeline-role" data-i18n="exp3_role">ServiceNow Developer – Infosys, Bucharest</span>
                         </div>
-                        <p>
+                        <p data-i18n="exp3_desc">
                             Developed and configured ServiceNow modules and workflows, implemented catalog
                             items and custom business rules, and supported integrations with existing IT
                             systems while following best practices and documentation standards.
@@ -196,10 +200,10 @@
                     </article>
                     <article class="timeline-item">
                         <div class="timeline-meta">
-                            <span class="timeline-period">Nov 2020 – Apr 2021</span>
-                            <span class="timeline-role">ServiceNow Administrator – Stefanini, Bucharest</span>
+                            <span class="timeline-period" data-i18n="exp4_period">Nov 2020 – Apr 2021</span>
+                            <span class="timeline-role" data-i18n="exp4_role">ServiceNow Administrator – Stefanini, Bucharest</span>
                         </div>
-                        <p>
+                        <p data-i18n="exp4_desc">
                             Administered and optimized ServiceNow instances, customized forms and lists,
                             maintained user and group management, and supported incident, problem and change
                             management processes for enterprise customers.
@@ -207,10 +211,10 @@
                     </article>
                     <article class="timeline-item">
                         <div class="timeline-meta">
-                            <span class="timeline-period">Dec 2018 – Nov 2020</span>
-                            <span class="timeline-role">Service Desk Engineer L1/2 – Stefanini, Bucharest</span>
+                            <span class="timeline-period" data-i18n="exp5_period">Dec 2018 – Nov 2020</span>
+                            <span class="timeline-role" data-i18n="exp5_role">Service Desk Engineer L1/2 – Stefanini, Bucharest</span>
                         </div>
-                        <p>
+                        <p data-i18n="exp5_desc">
                             Provided L1/L2 support for end users, troubleshooting hardware, software, and
                             network issues, documenting incidents, and collaborating with higher-level teams
                             to restore services within agreed SLAs.
@@ -218,10 +222,10 @@
                     </article>
                     <article class="timeline-item">
                         <div class="timeline-meta">
-                            <span class="timeline-period">Sep 2016 – Mar 2018</span>
-                            <span class="timeline-role">Spirit Order Support Escalations – CGS Romania</span>
+                            <span class="timeline-period" data-i18n="exp6_period">Sep 2016 – Mar 2018</span>
+                            <span class="timeline-role" data-i18n="exp6_role">Spirit Order Support Escalations – CGS Romania</span>
                         </div>
-                        <p>
+                        <p data-i18n="exp6_desc">
                             Handled complex Order Management escalations, investigated incidents across
                             billing, logistics, and delivery flows, and acted as a point of contact between
                             customers and internal technical teams.
@@ -232,65 +236,68 @@
 
             <section class="section" id="contact">
                 <div class="section-header">
-                    <h2>Contact</h2>
-                    <p>Tell me briefly what you need and I’ll get back with concrete options.</p>
+                    <h2 data-i18n="contact_title">Contact</h2>
+                    <p data-i18n="contact_sub">Tell me briefly what you need and I’ll get back with concrete options.</p>
                 </div>
                 <div class="contact-grid">
                     <form class="contact-form" autocomplete="on">
                         <div class="field-row">
                             <div class="field">
-                                <label for="name">Name</label>
-                                <input id="name" name="name" type="text" placeholder="Your name" required />
+                                <label for="name" data-i18n="contact_name_label">Name</label>
+                                <input id="name" name="name" type="text" placeholder="Your name" data-i18n-placeholder="contact_name_placeholder" required />
                             </div>
                             <div class="field">
-                                <label for="email">Email</label>
-                                <input id="email" name="email" type="email" placeholder="you@example.com" required />
+                                <label for="email" data-i18n="contact_email_label">Email</label>
+                                <input id="email" name="email" type="email" placeholder="you@example.com" data-i18n-placeholder="contact_email_placeholder" required />
                             </div>
                         </div>
                         <div class="field-row">
                             <div class="field">
-                                <label for="company">Company (optional)</label>
-                                <input id="company" name="company" type="text" placeholder="Your company" />
+                                <label for="company" data-i18n="contact_company_label">Company (optional)</label>
+                                <input id="company" name="company" type="text" placeholder="Your company" data-i18n-placeholder="contact_company_placeholder" />
                             </div>
                             <div class="field">
-                                <label for="topic">What do you need?</label>
+                                <label for="topic" data-i18n="contact_topic_label">What do you need?</label>
                                 <select id="topic" name="topic">
-                                    <option>Presentation website</option>
-                                    <option>Full‑stack project</option>
-                                    <option>ServiceNow / ITSM</option>
-                                    <option>Data & Excel / reporting</option>
-                                    <option>IT infrastructure & setup</option>
-                                    <option>Other / not sure yet</option>
+                                    <option data-i18n="contact_topic_opt1">Presentation website</option>
+                                    <option data-i18n="contact_topic_opt2">Full‑stack project</option>
+                                    <option data-i18n="contact_topic_opt3">ServiceNow / ITSM</option>
+                                    <option data-i18n="contact_topic_opt4">Data &amp; Excel / reporting</option>
+                                    <option data-i18n="contact_topic_opt5">IT infrastructure &amp; setup</option>
+                                    <option data-i18n="contact_topic_opt6">Other / not sure yet</option>
                                 </select>
                             </div>
                         </div>
                         <div class="field">
-                            <label for="message">Project details</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Short description, goals, timelines..."></textarea>
+                            <label for="message" data-i18n="contact_message_label">Project details</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Short description, goals, timelines..." data-i18n-placeholder="contact_message_placeholder"></textarea>
                         </div>
-                        <button class="btn primary full" type="submit">Send request</button>
+                        <button class="btn primary full" type="submit" data-i18n="contact_submit">Send request</button>
                     </form>
                     <aside class="contact-aside">
-                        <h3>Direct links</h3>
+                        <h3 data-i18n="contact_links_title">Direct links</h3>
                         <div class="contact-links">
                             <a class="contact-link-card github" href="https://github.com/bogdanca" target="_blank" rel="noopener">
                                 <span class="contact-icon">GH</span>
                                 <div class="contact-link-body">
-                                    <strong>GitHub</strong>
+                                    <strong data-i18n="contact_github_title">GitHub</strong>
+                                    <p data-i18n="contact_github_desc">Peek at current builds, experiments, and in-progress ideas.</p>
                                 </div>
                                 <span class="contact-link-arrow">↗</span>
                             </a>
                             <a class="contact-link-card linkedin" href="https://www.linkedin.com/in/bogdan-camenita" target="_blank" rel="noopener">
                                 <span class="contact-icon">in</span>
                                 <div class="contact-link-body">
-                                    <strong>LinkedIn</strong>
+                                    <strong data-i18n="contact_linkedin_title">LinkedIn</strong>
+                                    <p data-i18n="contact_linkedin_desc">See recommendations, roles, and the full IT journey.</p>
                                 </div>
                                 <span class="contact-link-arrow">↗</span>
                             </a>
                             <a class="contact-link-card gmail" href="mailto:camenitabogdan@gmail.com">
                                 <span class="contact-icon">✉</span>
                                 <div class="contact-link-body">
-                                    <strong>Gmail</strong>
+                                    <strong data-i18n="contact_gmail_title">Gmail</strong>
+                                    <p data-i18n="contact_gmail_desc">Drop a direct brief and get a reply with tailored next steps.</p>
                                 </div>
                                 <span class="contact-link-arrow">→</span>
                             </a>
@@ -298,10 +305,11 @@
                     </aside>
                 </div>
             </section>
+
         </main>
 
         <footer class="site-footer">
-            <span>© <span id="year"></span> Reko Tech. All rights reserved.</span>
+            <span>© <span id="year"></span> <span data-i18n="footer_note">Reko Tech. All rights reserved.</span></span>
         </footer>
     </div>
 

@@ -84,6 +84,294 @@ document.addEventListener("DOMContentLoaded", () => {
   const mobileClose = document.querySelector(".mobile-nav-close");
   const mobileLinks = document.querySelectorAll(".mobile-nav-links a");
   const mobileContent = document.querySelector(".mobile-nav-content");
+  const langButtons = document.querySelectorAll(".lang-btn");
+  const langStorageKey = "reko-lang";
+
+  const translations = {
+    en: {
+      theme_toggle: "Toggle theme",
+      nav_home: "Home",
+      nav_about: "About",
+      nav_skills: "Skills",
+      nav_experience: "Experience",
+      nav_contact: "Contact",
+      hero_tag: "IT Consultant · Front-End · ServiceNow · Cloud",
+      hero_title: "IT professional turning complex problems into clean digital experiences.",
+      hero_sub:
+        "I help businesses design, build, and maintain modern web, mobile, and enterprise solutions. From UX/UI to front-end and SQL, and on-premise infrastructure.",
+      hero_cta_primary: "Contact me",
+      hero_cta_secondary: "View 9 years of experience",
+      hero_meta_1: "9+ years in IT",
+      hero_meta_2: "Web Developer & Mobile",
+      hero_meta_3: "Graphic Design & Art",
+      hero_pill: "Currently available for remote & on-site work",
+      hero_card_title: "Tech snapshot",
+      hero_li_1: "Web design, UX/UI, presentation websites",
+      hero_li_2: "Front end & SQL development",
+      hero_li_3: "WordPress, Shopify, custom integrations",
+      hero_li_4: "ServiceNow development & administration",
+      hero_li_5: "Data manipulation, Excel analysis, automation",
+      hero_li_6: "Mobile Applications Development",
+      hero_li_7: "Local IT, Service Desk and Customer Service",
+      hero_li_8: "Active Directory, Exchange, and other Microsoft products",
+      hero_li_9: "Cloud Computing, AWS, Azure, and other cloud services",
+      hero_li_10: "Graphic Design and art",
+      about_title: "About",
+      about_sub: "9 years across web, infrastructure, and enterprise IT.",
+      about_body_1:
+        "Hello, my name is Bogdan Cameniță and I am an IT professional with 9+ years of hands-on experience across software development, IT operations, and digital transformation. I move comfortably between design, code, and infrastructure and a background in Customer Service.",
+      about_body_2:
+        "My work ranges from crafting fast, responsive presentation websites and mobile apps to configuring ServiceNow, Active Directory, Exchange, and business applications. I focus on reliable delivery, clear communication, and solutions that are maintainable long-term.",
+      skills_title: "Core skills",
+      skills_sub: "End-to-end IT delivery, from pixels to production.",
+      skills_card1_title: "Web & Mobile",
+      skills_card1_li1: "Web design & UX/UI",
+      skills_card1_li2: "Front end & back end development",
+      skills_card1_li3: "Responsive presentation websites",
+      skills_card1_li4: "Phone apps & APIs",
+      skills_card2_title: "Platforms & Integrations",
+      skills_card2_li1: "WordPress, Shopify, custom themes",
+      skills_card2_li2: "ServiceNow development & administration",
+      skills_card2_li3: "REST integrations & automation",
+      skills_card2_li4: "Microsoft Exchange, AD, SaaS tools",
+      skills_card3_title: "Business & Data",
+      skills_card3_li1: "Financial app setup (e.g. SmartBill)",
+      skills_card3_li2: "Business application roll-outs",
+      skills_card3_li3: "Excel power-user, data analysis",
+      skills_card3_li4: "Data manipulation & reporting",
+      skills_card4_title: "IT Operations",
+      skills_card4_li1: "Windows installation & licensing",
+      skills_card4_li2: "Asset management & inventory",
+      skills_card4_li3: "On-prem & hybrid environments",
+      skills_card4_li4: "Monitoring, troubleshooting",
+      skills_card4_li5: "Local IT, Service Desk and Customer Service",
+      experience_title: "Experience",
+      exp1_period: "Jan 2025 – Present",
+      exp1_role: "Senior Technical Engineer – Aurachain",
+      exp1_desc:
+        "Operating the Aurachain low-code platform, troubleshooting and resolving production incidents, and implementing applications on Aurachain.",
+      exp2_period: "Feb 2022 – May 2024",
+      exp2_role: "Senior Technical Engineer – Oracle Romania, Bucharest",
+      exp2_desc:
+        "Part of the EMEA Fusion B2B Service team, covering Fusion Service Cloud components and performance issues to ensure a smooth and reliable customer experience. Worked with HCM, SCM, Finance and other Oracle Fusion Cloud applications.",
+      exp3_period: "Jul 2021 – Aug 2021",
+      exp3_role: "ServiceNow Developer – Infosys, Bucharest",
+      exp3_desc:
+        "Developed and configured ServiceNow modules and workflows, implemented catalog items and custom business rules, and supported integrations with existing IT systems while following best practices and documentation standards.",
+      exp4_period: "Nov 2020 – Apr 2021",
+      exp4_role: "ServiceNow Administrator – Stefanini, Bucharest",
+      exp4_desc:
+        "Administered and optimized ServiceNow instances, customized forms and lists, maintained user and group management, and supported incident, problem and change management processes for enterprise customers.",
+      exp5_period: "Dec 2018 – Nov 2020",
+      exp5_role: "Service Desk Engineer L1/2 – Stefanini, Bucharest",
+      exp5_desc:
+        "Provided L1/L2 support for end users, troubleshooting hardware, software, and network issues, documenting incidents, and collaborating with higher-level teams to restore services within agreed SLAs.",
+      exp6_period: "Sep 2016 – Mar 2018",
+      exp6_role: "Spirit Order Support Escalations – CGS Romania",
+      exp6_desc:
+        "Handled complex Order Management escalations, investigated incidents across billing, logistics, and delivery flows, and acted as a point of contact between customers and internal technical teams.",
+      contact_title: "Contact",
+      contact_sub: "Tell me briefly what you need and I’ll get back with concrete options.",
+      contact_name_label: "Name",
+      contact_name_placeholder: "Your name",
+      contact_email_label: "Email",
+      contact_email_placeholder: "you@example.com",
+      contact_company_label: "Company (optional)",
+      contact_company_placeholder: "Your company",
+      contact_topic_label: "What do you need?",
+      contact_topic_opt1: "Presentation website",
+      contact_topic_opt2: "Full-stack project",
+      contact_topic_opt3: "ServiceNow / ITSM",
+      contact_topic_opt4: "Data & Excel / reporting",
+      contact_topic_opt5: "IT infrastructure & setup",
+      contact_topic_opt6: "Other / not sure yet",
+      contact_message_label: "Project details",
+      contact_message_placeholder: "Short description, goals, timelines...",
+      contact_submit: "Send request",
+      contact_links_title: "Direct links",
+      contact_github_title: "GitHub",
+      contact_github_desc: "Peek at current builds, experiments, and in-progress ideas.",
+      contact_linkedin_title: "LinkedIn",
+      contact_linkedin_desc: "See recommendations, roles, and the full IT journey.",
+      contact_gmail_title: "Gmail",
+      contact_gmail_desc: "Drop a direct brief and get a reply with tailored next steps.",
+      footer_note: "Reko Tech. All rights reserved.",
+    },
+    ro: {
+      theme_toggle: "Schimbă tema",
+      nav_home: "Acasă",
+      nav_about: "Despre",
+      nav_skills: "Abilități",
+      nav_experience: "Experiență",
+      nav_contact: "Contact",
+      hero_tag: "Consultant IT · Front-End · ServiceNow · Cloud",
+      hero_title: "Specialist IT care transformă problemele complexe în soluții digitale simple și eficiente.",
+      hero_sub: "Ajut companiile să proiecteze, construiască și să mențină soluții moderne web, mobile și enterprise. De la UX/UI la front-end și SQL, și infrastructură on-premise.",
+      hero_cta_primary: "Contactează-mă",
+      hero_cta_secondary: "Vezi 9 ani de experiență",
+      hero_meta_1: "9+ ani în IT",
+      hero_meta_2: "Dezvoltator Web & Mobile",
+      hero_meta_3: "Design Grafic & Artă",
+      hero_pill: "Disponibil pentru colaborări remote & on-site",
+      hero_card_title: "Competențe tehnice",
+      hero_li_1: "Web design, UX/UI, site-uri de prezentare",
+      hero_li_2: "Dezvoltare Front-end & SQL",
+      hero_li_3: "WordPress, Shopify, integrări personalizate",
+      hero_li_4: "Dezvoltare și administrare ServiceNow",
+      hero_li_5: "Manipulare date, analiză Excel, automatizare",
+      hero_li_6: "Dezvoltare aplicații mobile",
+      hero_li_7: "IT local, Service Desk și Customer Service",
+      hero_li_8: "Active Directory, Exchange și alte produse Microsoft",
+      hero_li_9: "Cloud Computing, AWS, Azure și alte servicii cloud",
+      hero_li_10: "Design grafic și artă",
+      about_title: "Despre",
+      about_sub: "9 ani în web, infrastructură și IT enterprise.",
+      about_body_1:
+        "Salut, sunt Bogdan Cameniță și sunt profesionist IT cu peste 9 ani de experiență practică în dezvoltare software, operațiuni IT și transformare digitală. Lucrez confortabil între design, cod și infrastructură, cu experiență în Customer Service.",
+      about_body_2:
+        "Proiectele mele includ site-uri rapide și responsive, aplicații mobile, configurare ServiceNow, Active Directory, Exchange și aplicații de business. Mă concentrez pe livrare fiabilă, comunicare clară și soluții ușor de menținut.",
+      skills_title: "Abilități principale",
+      skills_sub: "Livrare IT cap-coadă, de la pixeli la producție.",
+      skills_card1_title: "Web & Mobile",
+      skills_card1_li1: "Web design & UX/UI",
+      skills_card1_li2: "Dezvoltare front-end & back-end",
+      skills_card1_li3: "Site-uri de prezentare responsive",
+      skills_card1_li4: "Aplicații și API-uri mobile",
+      skills_card2_title: "Platforme & Integrări",
+      skills_card2_li1: "WordPress, Shopify, teme personalizate",
+      skills_card2_li2: "Dezvoltare & administrare ServiceNow",
+      skills_card2_li3: "Integrări REST & automatizări",
+      skills_card2_li4: "Microsoft Exchange, AD, aplicații SaaS",
+      skills_card3_title: "Business & Date",
+      skills_card3_li1: "Configurare aplicații financiare (ex. SmartBill)",
+      skills_card3_li2: "Implementări aplicații de business",
+      skills_card3_li3: "Experiență avansată Excel, analiză de date",
+      skills_card3_li4: "Manipulare și raportare date",
+      skills_card4_title: "Operațiuni IT",
+      skills_card4_li1: "Instalare și licențiere Windows",
+      skills_card4_li2: "Managementul inventarului IT",
+      skills_card4_li3: "Mediu on-prem & hibrid",
+      skills_card4_li4: "Monitorizare, depanare",
+      skills_card4_li5: "IT local, Service Desk și Customer Service",
+      experience_title: "Experiență",
+      exp1_period: "Ian 2025 – Prezent",
+      exp1_role: "Senior Technical Engineer – Aurachain",
+      exp1_desc:
+        "Operarea platformei low-code Aurachain, rezolvarea incidentelor și implementarea aplicațiilor pe platformă.",
+      exp2_period: "Feb 2022 – Mai 2024",
+      exp2_role: "Senior Technical Engineer – Oracle România, București",
+      exp2_desc:
+        "Parte din echipa EMEA Fusion B2B Service, acoperind componentele Fusion Service Cloud și problemele de performanță pentru a asigura o experiență client impecabilă. Am lucrat cu HCM, SCM, Finance și alte aplicații Oracle Fusion Cloud.",
+      exp3_period: "Iul 2021 – Aug 2021",
+      exp3_role: "ServiceNow Developer – Infosys, București",
+      exp3_desc:
+        "Am dezvoltat și configurat module ServiceNow, am implementat elemente de catalog și reguli personalizate și am susținut integrări cu sistemele existente respectând bunele practici.",
+      exp4_period: "Nov 2020 – Apr 2021",
+      exp4_role: "ServiceNow Administrator – Stefanini, București",
+      exp4_desc:
+        "Am administrat și optimizat instanțele ServiceNow, am personalizat formulare și liste, am gestionat utilizatori și grupuri și am susținut procesele de incident, problem și change management.",
+      exp5_period: "Dec 2018 – Nov 2020",
+      exp5_role: "Service Desk Engineer L1/2 – Stefanini, București",
+      exp5_desc:
+        "Am oferit suport L1/L2 pentru utilizatori, am depanat probleme hardware/software/rețea, am documentat incidente și am colaborat cu echipele superioare pentru a restabili serviciile.",
+      exp6_period: "Sep 2016 – Mar 2018",
+      exp6_role: "Spirit Order Support Escalations – CGS România",
+      exp6_desc:
+        "Am gestionat escaladările complexe din Order Management, am investigat incidentele ce țin de facturare, logistică și livrare și am fost punct de contact între clienți și echipele tehnice interne.",
+      contact_title: "Contact",
+      contact_sub: "Spune-mi pe scurt ce ai nevoie și revin cu opțiuni concrete.",
+      contact_name_label: "Nume",
+      contact_name_placeholder: "Numele tău",
+      contact_email_label: "Email",
+      contact_email_placeholder: "tu@exemplu.com",
+      contact_company_label: "Companie (opțional)",
+      contact_company_placeholder: "Compania ta",
+      contact_topic_label: "De ce ai nevoie?",
+      contact_topic_opt1: "Site de prezentare",
+      contact_topic_opt2: "Proiect full-stack",
+      contact_topic_opt3: "ServiceNow / ITSM",
+      contact_topic_opt4: "Date & Excel / raportare",
+      contact_topic_opt5: "Infrastructură & setup IT",
+      contact_topic_opt6: "Altceva / nu sunt sigur",
+      contact_message_label: "Detalii proiect",
+      contact_message_placeholder: "Descriere scurtă, obiective, termene...",
+      contact_submit: "Trimite cererea",
+      contact_links_title: "Linkuri directe",
+      contact_github_title: "GitHub",
+      contact_github_desc: "Vezi proiecte actuale, experimente și idei în lucru.",
+      contact_linkedin_title: "LinkedIn",
+      contact_linkedin_desc: "Vezi recomandări, roluri și întregul parcurs IT.",
+      contact_gmail_title: "Gmail",
+      contact_gmail_desc: "Lasă un mesaj scurt și revin cu următorii pași.",
+      footer_note: "Reko Tech. Toate drepturile rezervate.",
+    },
+  };
+
+  const applyLanguage = (lang) => {
+    const dict = translations[lang] || translations.en;
+    root.setAttribute("lang", lang);
+
+    document.querySelectorAll("[data-i18n]").forEach((node) => {
+      const key = node.getAttribute("data-i18n");
+      if (key && dict[key]) {
+        node.textContent = dict[key];
+      }
+    });
+
+    document.querySelectorAll("[data-i18n-placeholder]").forEach((node) => {
+      const key = node.getAttribute("data-i18n-placeholder");
+      if (key && dict[key]) {
+        node.setAttribute("placeholder", dict[key]);
+      }
+    });
+
+    document.querySelectorAll("option[data-i18n]").forEach((node) => {
+      const key = node.getAttribute("data-i18n");
+      if (key && dict[key]) {
+        node.textContent = dict[key];
+      }
+    });
+
+    document.querySelectorAll("[data-i18n-aria]").forEach((node) => {
+      const key = node.getAttribute("data-i18n-aria");
+      if (key && dict[key]) {
+        node.setAttribute("aria-label", dict[key]);
+      }
+    });
+
+    langButtons.forEach((btn) => {
+      const isActive = btn.dataset.lang === lang;
+      btn.classList.toggle("active", isActive);
+      btn.setAttribute("aria-pressed", String(isActive));
+    });
+
+    try {
+      window.localStorage.setItem(langStorageKey, lang);
+    } catch (err) {
+      // ignore storage errors
+    }
+  };
+
+  const initLanguageToggle = () => {
+    const storedLang = (() => {
+      try {
+        return window.localStorage.getItem(langStorageKey);
+      } catch (err) {
+        return null;
+      }
+    })();
+
+    const initialLang = storedLang && translations[storedLang] ? storedLang : "en";
+    applyLanguage(initialLang);
+
+    langButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const targetLang = btn.dataset.lang;
+        if (!targetLang || !translations[targetLang]) return;
+        applyLanguage(targetLang);
+      });
+    });
+  };
 
   const setMenuState = (open) => {
     if (!menuToggle || !mobilePanel) return;
@@ -361,6 +649,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFluidCard(".hero-card");
   initPointerGlow();
   initTiltMotion();
+  initLanguageToggle();
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (e) => {
