@@ -870,6 +870,9 @@ html.theme-5 .theme-toggle {
   text-transform: uppercase;
   color: rgba(226, 232, 240, 0.9);
   margin: 0 0 10px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.35em;
 }
 
 .hero-main h1 {

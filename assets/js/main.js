@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       nav_skills: "Skills",
       nav_experience: "Experience",
       nav_contact: "Contact",
-      hero_tag: "IT Consultant · Front-End · ServiceNow · Cloud",
+      hero_tag: "IT Consultant · Front-End · ServiceNow · Cloud · AI Prompt Engineer",
       hero_title: "IT professional turning complex problems into clean digital experiences.",
       hero_sub:
         "I help businesses design, build, and maintain modern web, mobile, and enterprise solutions. From UX/UI to front-end and SQL, and on-premise infrastructure.",
@@ -208,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
       nav_skills: "Abilități",
       nav_experience: "Experiență",
       nav_contact: "Contact",
-      hero_tag: "Consultant IT · Front-End · ServiceNow · Cloud",
+      hero_tag: "Consultant IT · Front-End · ServiceNow · Cloud · Inginer Prompt AI",
       hero_title: "Specialist IT care transformă problemele complexe în soluții digitale simple și eficiente.",
       hero_sub: "Ajut companiile să proiecteze, construiască și să mențină soluții moderne web, mobile și enterprise. De la UX/UI la front-end și SQL, și infrastructură on-premise.",
       hero_cta_primary: "Contactează-mă",
