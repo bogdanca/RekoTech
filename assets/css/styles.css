@@ -319,6 +319,24 @@ body.tilt-enabled .hero-liquid {
   color: var(--text);
 }
 
+@media (max-width: 720px) {
+  .header-actions {
+    gap: 10px;
+  }
+
+  .lang-toggle {
+    order: 1;
+  }
+
+  .theme-toggle {
+    order: 2;
+  }
+
+  .menu-toggle {
+    order: 3;
+  }
+}
+
 .logo-mark {
   width: 36px;
   height: 36px;
