@@ -134,21 +134,17 @@ body.fast-heartbeat {
   --pulse-speed: 1.2s;
 }
 
-body.tilt-enabled .hero-main,
-body.tilt-enabled .hero-card,
-body.tilt-enabled .about-grid,
-body.tilt-enabled .pill-grid,
-body.tilt-enabled .services-grid,
-body.tilt-enabled .timeline,
-body.tilt-enabled .contact-grid,
-body.tilt-enabled .contact-aside,
-body.tilt-enabled .contact-links,
-body.tilt-enabled .site-header,
-body.tilt-enabled .site-footer {
+body.tilt-enabled .hero-grid,
+body.tilt-enabled .hero-main {
   will-change: transform, box-shadow;
   transform: perspective(1200px) translate3d(var(--tilt-shift-x), var(--tilt-shift-y), 0)
-    rotateX(var(--tilt-rotate-pitch)) rotateY(var(--tilt-rotate-roll));
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+    rotateX(calc(var(--tilt-rotate-pitch))) rotateY(calc(var(--tilt-rotate-roll)));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.tilt-enabled .hero-main::before {
+  transform: translate3d(calc(var(--tilt-shift-x) * -0.2), calc(var(--tilt-shift-y) * -0.2), 0);
+  transition: transform 0.3s ease;
 }
 
 body.tilt-enabled .contact-link-card::before,
