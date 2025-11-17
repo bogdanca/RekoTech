@@ -240,7 +240,22 @@
                     <p data-i18n="contact_sub">Tell me briefly what you need and I’ll get back with concrete options.</p>
                 </div>
                 <div class="contact-grid">
-                    <form class="contact-form" autocomplete="on">
+                    <form
+                        id="contactForm"
+                        class="contact-form"
+                        name="contact"
+                        method="POST"
+                        data-netlify="true"
+                        netlify-honeypot="bot-field"
+                        autocomplete="on"
+                    >
+                        <input type="hidden" name="form-name" value="contact" />
+                        <div class="honeypot" aria-hidden="true">
+                            <label>
+                                Don’t fill this out if you’re human:
+                                <input name="bot-field" type="text" tabindex="-1" />
+                            </label>
+                        </div>
                         <div class="field-row">
                             <div class="field">
                                 <label for="name" data-i18n="contact_name_label">Name</label>
@@ -273,6 +288,7 @@
                             <textarea id="message" name="message" rows="4" placeholder="Short description, goals, timelines..." data-i18n-placeholder="contact_message_placeholder"></textarea>
                         </div>
                         <button class="btn primary full" type="submit" data-i18n="contact_submit">Send request</button>
+                        <p class="form-status" id="contactStatus" aria-live="polite"></p>
                     </form>
                     <aside class="contact-aside">
                         <h3 data-i18n="contact_links_title">Direct links</h3>
@@ -293,7 +309,12 @@
                                 </div>
                                 <span class="contact-link-arrow">↗</span>
                             </a>
-                            <a class="contact-link-card gmail" href="mailto:camenitabogdan@gmail.com">
+                            <a
+                                class="contact-link-card gmail"
+                                href="#"
+                                data-email="Y2FtZW5pdGFib2dkYW5AZ21haWwuY29t"
+                                data-email-scheme="mailto"
+                            >
                                 <span class="contact-icon">✉</span>
                                 <div class="contact-link-body">
                                     <strong data-i18n="contact_gmail_title">Gmail</strong>

@@ -188,6 +188,9 @@ document.addEventListener("DOMContentLoaded", () => {
       contact_message_label: "Project details",
       contact_message_placeholder: "Short description, goals, timelines...",
       contact_submit: "Send request",
+      contact_status_sending: "Sending…",
+      contact_status_success: "Thanks! I’ll reply soon.",
+      contact_status_error: "Something went wrong. Please retry.",
       contact_links_title: "Direct links",
       contact_github_title: "GitHub",
       contact_github_desc: "Peek at current builds, experiments, and in-progress ideas.",
@@ -195,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
       contact_linkedin_desc: "See recommendations, roles, and the full IT journey.",
       contact_gmail_title: "Gmail",
       contact_gmail_desc: "Drop a direct brief and get a reply with tailored next steps.",
-      footer_note: "Reko Tech - Bogdan Cameniță. All rights reserved.",
+      footer_note: "Reko Tech - Bogdan Cameniță.",
     },
     ro: {
       theme_toggle: "Schimbă tema",
@@ -296,6 +299,9 @@ document.addEventListener("DOMContentLoaded", () => {
       contact_message_label: "Detalii proiect",
       contact_message_placeholder: "Descriere scurtă, obiective, termene...",
       contact_submit: "Trimite cererea",
+      contact_status_sending: "Trimit…",
+      contact_status_success: "Mulțumesc! Revin în curând.",
+      contact_status_error: "A apărut o problemă. Încearcă din nou.",
       contact_links_title: "Linkuri directe",
       contact_github_title: "GitHub",
       contact_github_desc: "Vezi proiecte actuale, experimente și idei în lucru.",
@@ -303,8 +309,14 @@ document.addEventListener("DOMContentLoaded", () => {
       contact_linkedin_desc: "Vezi recomandări, roluri și întregul parcurs IT.",
       contact_gmail_title: "Gmail",
       contact_gmail_desc: "Lasă un mesaj scurt și revin cu următorii pași.",
-      footer_note: "Reko Tech - Bogdan Cameniță. Toate drepturile rezervate.",
+      footer_note: "Reko Tech - Bogdan Cameniță.",
     },
+  };
+
+  const getTranslation = (key) => {
+    const lang = root?.getAttribute("lang") || "en";
+    const dict = translations[lang] || translations.en;
+    return dict[key] || "";
   };
 
   const applyLanguage = (lang) => {
@@ -650,6 +662,79 @@ document.addEventListener("DOMContentLoaded", () => {
   initPointerGlow();
   initTiltMotion();
   initLanguageToggle();
+
+  const contactLinks = document.querySelectorAll(".contact-link-card[data-email]");
+  contactLinks.forEach((link) => {
+    const encodedEmail = link.getAttribute("data-email");
+    const scheme = link.getAttribute("data-email-scheme") || "mailto";
+    if (!encodedEmail) return;
+
+    try {
+      const decodedEmail = atob(encodedEmail);
+      link.setAttribute("href", `${scheme}:${decodedEmail}`);
+    } catch (_) {
+      // If decoding fails, fall back to no-op link
+      link.removeAttribute("href");
+    }
+
+    link.addEventListener("click", () => {
+      if (!link.href) return;
+      // optional analytics hook or copy fallback could go here
+    });
+  });
+
+  const contactForm = document.getElementById("contactForm");
+  const contactStatus = document.getElementById("contactStatus");
+
+  const updateStatus = (state, messageKey) => {
+    if (!contactStatus) return;
+    contactStatus.textContent = getTranslation(messageKey);
+    contactStatus.dataset.state = state;
+  };
+
+  if (contactForm) {
+    const submitButton = contactForm.querySelector("button[type='submit']");
+
+    contactForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      updateStatus("sending", "contact_status_sending");
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
+
+      const formData = new FormData(contactForm);
+      if (!formData.has("form-name")) {
+        formData.append("form-name", contactForm.getAttribute("name") || "contact");
+      }
+
+      const encode = (data) =>
+        Array.from(data.entries())
+          .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+          .join("&");
+
+      try {
+        const response = await fetch(contactForm.getAttribute("action") || window.location.pathname || "/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: encode(formData),
+        });
+
+        if (!response.ok) {
+          throw new Error("Network error");
+        }
+
+        contactForm.reset();
+        updateStatus("success", "contact_status_success");
+      } catch (error) {
+        updateStatus("error", "contact_status_error");
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+        }
+      }
+    });
+  }
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (e) => {
