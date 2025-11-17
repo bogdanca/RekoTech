@@ -330,6 +330,7 @@ body.tilt-enabled .hero-liquid {
 
   .theme-toggle {
     order: 2;
+    margin-left: 0;
   }
 
   .menu-toggle {

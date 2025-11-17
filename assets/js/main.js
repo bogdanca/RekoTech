@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
       contact_linkedin_desc: "See recommendations, roles, and the full IT journey.",
       contact_gmail_title: "Gmail",
       contact_gmail_desc: "Drop a direct brief and get a reply with tailored next steps.",
-      footer_note: "Reko Tech. All rights reserved.",
+      footer_note: "Reko Tech - Bogdan Cameniță. All rights reserved.",
     },
     ro: {
       theme_toggle: "Schimbă tema",
@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
       contact_linkedin_desc: "Vezi recomandări, roluri și întregul parcurs IT.",
       contact_gmail_title: "Gmail",
       contact_gmail_desc: "Lasă un mesaj scurt și revin cu următorii pași.",
-      footer_note: "Reko Tech. Toate drepturile rezervate.",
+      footer_note: "Reko Tech - Bogdan Cameniță. Toate drepturile rezervate.",
     },
   };
 
