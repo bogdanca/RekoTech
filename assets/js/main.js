@@ -130,12 +130,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
   const initPointerGlow = () => {
-    if (!root || typeof window === "undefined") return null;
+    if (!root || typeof window === "undefined") return;
 
     const state = {
       x: 0.5,
       y: 0.3,
       raf: null,
+      dirty: false,
     };
 
     const commit = () => {
@@ -149,16 +150,12 @@ document.addEventListener("DOMContentLoaded", () => {
       state.raf = requestAnimationFrame(commit);
     };
 
-    const setRatios = (ratioX, ratioY) => {
-      state.x = clamp(ratioX, 0, 1);
-      state.y = clamp(ratioY, 0, 1);
-      schedule();
-    };
-
     const updateFromPoint = (clientX, clientY) => {
       const width = window.innerWidth || 1;
       const height = window.innerHeight || 1;
-      setRatios(clientX / width, clientY / height);
+      state.x = clamp(clientX / width, 0, 1);
+      state.y = clamp(clientY / height, 0, 1);
+      schedule();
     };
 
     const handleMouseMove = (event) => {
@@ -172,18 +169,18 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const resetToCenter = () => {
-      setRatios(0.5, 0.35);
+      state.x = 0.5;
+      state.y = 0.35;
+      schedule();
     };
 
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("touchmove", handleTouchMove, { passive: true });
     window.addEventListener("mouseleave", resetToCenter);
     window.addEventListener("touchend", resetToCenter);
-
-    return { setRatios };
   };
 
-  const initTiltMotion = (pointerController) => {
+  const initTiltMotion = () => {
     if (!root || typeof window === "undefined") return;
     const body = document.body;
     if (!body || !("DeviceOrientationEvent" in window)) return;
@@ -200,12 +197,6 @@ document.addEventListener("DOMContentLoaded", () => {
       root.style.setProperty("--tilt-shift-y", `${pitchRatio * 18}px`);
       root.style.setProperty("--tilt-bg-shift-x", `${rollRatio * 35}px`);
       root.style.setProperty("--tilt-bg-shift-y", `${pitchRatio * 35}px`);
-
-      if (pointerController && typeof pointerController.setRatios === "function") {
-        const pointerX = clamp(0.5 + rollRatio * 0.4, 0, 1);
-        const pointerY = clamp(0.35 - pitchRatio * 0.35, 0, 1);
-        pointerController.setRatios(pointerX, pointerY);
-      }
     };
 
     const activateTilt = () => {
@@ -373,8 +364,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initFluidCard(".hero-main");
   initFluidCard(".hero-card");
-  const pointerController = initPointerGlow();
-  initTiltMotion(pointerController);
+  initPointerGlow();
+  initTiltMotion();
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (e) => {
