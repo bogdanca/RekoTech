@@ -191,6 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
       contact_status_sending: "Sending…",
       contact_status_success: "Thanks! I’ll reply soon.",
       contact_status_error: "Something went wrong. Please retry.",
+      contact_status_rate_limited: "Please wait 10 minutes before sending another request.",
       contact_links_title: "Direct links",
       contact_github_title: "GitHub",
       contact_github_desc: "Peek at current builds, experiments, and in-progress ideas.",
@@ -302,6 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
       contact_status_sending: "Trimit…",
       contact_status_success: "Mulțumesc! Revin în curând.",
       contact_status_error: "A apărut o problemă. Încearcă din nou.",
+      contact_status_rate_limited: "Te rog să aștepți 10 minute înainte de a trimite o nouă cerere.",
       contact_links_title: "Linkuri directe",
       contact_github_title: "GitHub",
       contact_github_desc: "Vezi proiecte actuale, experimente și idei în lucru.",
@@ -685,6 +687,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const contactForm = document.getElementById("contactForm");
   const contactStatus = document.getElementById("contactStatus");
+  const CONTACT_RATE_LIMIT_MINUTES = 10;
+  const contactRateLimitKey = "contact-last-submit";
 
   const updateStatus = (state, messageKey) => {
     if (!contactStatus) return;
@@ -692,11 +696,38 @@ document.addEventListener("DOMContentLoaded", () => {
     contactStatus.dataset.state = state;
   };
 
+  const getLastSubmissionTime = () => {
+    try {
+      const stored = window.localStorage.getItem(contactRateLimitKey);
+      return stored ? Number(stored) : null;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const setLastSubmissionTime = () => {
+    try {
+      window.localStorage.setItem(contactRateLimitKey, String(Date.now()));
+    } catch (_) {
+      // ignore storage errors
+    }
+  };
+
   if (contactForm) {
     const submitButton = contactForm.querySelector("button[type='submit']");
 
     contactForm.addEventListener("submit", async (event) => {
       event.preventDefault();
+
+      const lastSubmission = getLastSubmissionTime();
+      if (lastSubmission) {
+        const elapsedMs = Date.now() - lastSubmission;
+        const limitMs = CONTACT_RATE_LIMIT_MINUTES * 60 * 1000;
+        if (elapsedMs < limitMs) {
+          updateStatus("rate-limited", "contact_status_rate_limited");
+          return;
+        }
+      }
 
       updateStatus("sending", "contact_status_sending");
       if (submitButton) {
@@ -726,6 +757,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         contactForm.reset();
         updateStatus("success", "contact_status_success");
+        setLastSubmissionTime();
       } catch (error) {
         updateStatus("error", "contact_status_error");
       } finally {
