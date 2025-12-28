@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const root = document.documentElement;
   const themeToggle = document.querySelector(".theme-toggle");
-  const favicon = document.getElementById("dynamic-favicon");
+
   const themes = ["theme-1", "theme-2", "theme-3", "theme-4", "theme-5"];
   const storageKey = "reko-theme";
   let currentIndex = 0;
@@ -19,26 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "theme-5": { primary: "#ec4899", secondary: "#a855f7" },
   };
 
-  const setFavicon = (themeKey) => {
-    if (!favicon) return;
-    const colors = themePalette[themeKey] || themePalette["theme-1"];
-    const svg = `<?xml version="1.0" encoding="UTF-8"?>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-        <defs>
-          <linearGradient id="grad" x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0%" stop-color="${colors.primary}"/>
-            <stop offset="100%" stop-color="${colors.secondary}"/>
-          </linearGradient>
-        </defs>
-        <circle cx="32" cy="32" r="24" fill="url(#grad)">
-          <animate attributeName="r" values="20;24;20" dur="2.6s" repeatCount="indefinite" />
-        </circle>
-        <path d="M20 32h24M24 24h16M24 40h16" stroke="#0f172a" stroke-width="3" stroke-linecap="round" opacity="0.9">
-          <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" />
-        </path>
-      </svg>`;
-    favicon.setAttribute("href", `data:image/svg+xml,${encodeURIComponent(svg)}`);
-  };
+
 
   if (root) {
     const stored = typeof window !== "undefined" ? window.localStorage.getItem(storageKey) : null;
@@ -48,15 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
       themes.forEach((t) => root.classList.remove(t));
       root.classList.add(themes[storedIndex]);
       currentIndex = storedIndex;
-      setFavicon(themes[storedIndex]);
     } else {
       const existing = themes.findIndex((t) => root.classList.contains(t));
       if (existing >= 0) {
         currentIndex = existing;
-        setFavicon(themes[existing]);
       } else {
         root.classList.add(themes[currentIndex]);
-        setFavicon(themes[currentIndex]);
       }
     }
   }
@@ -67,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
       themes.forEach((t) => root.classList.remove(t));
       root.classList.add(themes[nextIndex]);
       currentIndex = nextIndex;
-      setFavicon(themes[nextIndex]);
 
       try {
         if (typeof window !== "undefined") {
