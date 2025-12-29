@@ -467,7 +467,19 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     })();
 
-    const initialLang = storedLang && translations[storedLang] ? storedLang : "en";
+    const getBrowserLang = () => {
+      if (typeof navigator !== "undefined") {
+        const browserLangs = navigator.languages || [navigator.language];
+        for (const lang of browserLangs) {
+          if (!lang) continue;
+          const code = lang.split("-")[0].toLowerCase();
+          if (translations[code]) return code;
+        }
+      }
+      return "ro";
+    };
+
+    const initialLang = storedLang && translations[storedLang] ? storedLang : getBrowserLang();
     applyLanguage(initialLang);
 
     langButtons.forEach((btn) => {
