@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
       exp2_role: "Senior Technical Engineer – Oracle Romania, Bucharest",
       exp2_desc:
         "Part of the EMEA Fusion B2B Service team, covering Fusion Service Cloud components and performance issues to ensure a smooth and reliable customer experience. Worked with HCM, SCM, Finance and other Oracle Fusion Cloud applications.",
-      exp3_period: "Jul 2021 – Aug 2021",
+      exp3_period: "Jul 2021 – Aug 2023",
       exp3_role: "ServiceNow Developer – Infosys, Bucharest",
       exp3_desc:
         "Developed and configured ServiceNow modules and workflows, implemented catalog items and custom business rules, and supported integrations with existing IT systems while following best practices and documentation standards.",
@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
       exp2_role: "Senior Technical Engineer – Oracle România, București",
       exp2_desc:
         "Parte din echipa EMEA Fusion B2B Service, acoperind componentele Fusion Service Cloud și problemele de performanță pentru a asigura o experiență client impecabilă. Am lucrat cu HCM, SCM, Finance și alte aplicații Oracle Fusion Cloud.",
-      exp3_period: "Iul 2021 – Aug 2021",
+      exp3_period: "Iul 2021 – Aug 2023",
       exp3_role: "ServiceNow Developer – Infosys, București",
       exp3_desc:
         "Am dezvoltat și configurat module ServiceNow, am implementat elemente de catalog și reguli personalizate și am susținut integrări cu sistemele existente respectând bunele practici.",
@@ -358,7 +358,7 @@ document.addEventListener("DOMContentLoaded", () => {
       exp2_role: "Senior Technical Engineer – Oracle Romania, Бухарест",
       exp2_desc:
         "Часть команды EMEA Fusion B2B Service, отвечал за компоненты Fusion Service Cloud и вопросы производительности для обеспечения бесперебойного опыта клиентов. Работал с HCM, SCM, Finance и другими приложениями Oracle Fusion Cloud.",
-      exp3_period: "Июл 2021 – Авг 2021",
+      exp3_period: "Июл 2021 – Авг 2023",
       exp3_role: "ServiceNow Developer – Infosys, Бухарест",
       exp3_desc:
         "Разрабатывал и настраивал модули и рабочие процессы ServiceNow, внедрял элементы каталога и кастомные бизнес-правила, поддерживал интеграции с существующими IT-системами, следуя лучшим практикам.",
