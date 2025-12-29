@@ -850,6 +850,9 @@ document.addEventListener("DOMContentLoaded", () => {
         contactForm.reset();
         updateStatus("success", "contact_status_success");
         setLastSubmissionTime();
+        if (typeof window.gtag_report_conversion === "function") {
+          window.gtag_report_conversion();
+        }
       } catch (error) {
         updateStatus("error", "contact_status_error");
       } finally {

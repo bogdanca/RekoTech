@@ -11,6 +11,20 @@
 
         gtag('config', 'AW-17837171565');
     </script>
+    <script>
+        function gtag_report_conversion(url) {
+            var callback = function () {
+                if (typeof (url) != 'undefined') {
+                    window.location = url;
+                }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-17837171565/13NXCNXAu9kbEO3GtrlC',
+                'event_callback': callback
+            });
+            return false;
+        }
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reko Tech</title>
