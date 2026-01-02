@@ -177,6 +177,8 @@ document.addEventListener("DOMContentLoaded", () => {
       contact_linkedin_desc: "See recommendations, roles, and the full IT journey.",
       contact_gmail_title: "Gmail",
       contact_gmail_desc: "Drop a direct brief and get a reply with tailored next steps.",
+      contact_phone_title: "Phone",
+      contact_phone_desc: "Feel free to call me or send me a message on WhatsApp. Click to reveal.",
       footer_note: "Reko Tech - Bogdan Cameniță.",
     },
     ro: {
@@ -290,6 +292,8 @@ document.addEventListener("DOMContentLoaded", () => {
       contact_linkedin_desc: "Vezi recomandări, roluri și întregul parcurs IT.",
       contact_gmail_title: "Gmail",
       contact_gmail_desc: "Lasă un mesaj scurt și revin cu următorii pași.",
+      contact_phone_title: "Telefon",
+      contact_phone_desc: "Nu ezita să mă suni sau să-mi trimiți un mesaj pe WhatsApp. Apasă pentru a vedea numărul.",
       footer_note: "Reko Tech - Bogdan Cameniță.",
     },
     ru: {
@@ -403,6 +407,8 @@ document.addEventListener("DOMContentLoaded", () => {
       contact_linkedin_desc: "Рекомендации, роли и полный IT-путь.",
       contact_gmail_title: "Gmail",
       contact_gmail_desc: "Напишите напрямую и получите ответ с планом действий.",
+      contact_phone_title: "Телефон",
+      contact_phone_desc: "Смело звоните или пишите мне в WhatsApp. Нажмите, чтобы увидеть номер.",
       footer_note: "Reko Tech - Богдан Каменицэ.",
     },
   };
@@ -787,6 +793,38 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!link.href) return;
       // optional analytics hook or copy fallback could go here
     });
+  });
+
+  const phoneLinks = document.querySelectorAll(".contact-link-card[data-phone]");
+  phoneLinks.forEach((link) => {
+    const encodedPhone = link.getAttribute("data-phone");
+    const scheme = link.getAttribute("data-phone-scheme") || "tel";
+    if (!encodedPhone) return;
+
+    link.addEventListener("click", (e) => {
+      if (link.classList.contains("revealed")) return;
+      e.preventDefault();
+      try {
+        const decodedPhone = atob(encodedPhone);
+        const telLink = `${scheme}:${decodedPhone.replace(/\s+/g, '')}`;
+        link.setAttribute("href", telLink);
+
+        const desc = link.querySelector("p");
+        if (desc) {
+          desc.textContent = decodedPhone;
+          desc.removeAttribute("data-i18n");
+        }
+
+        link.classList.add("revealed");
+        const arrow = link.querySelector(".contact-link-arrow");
+        if (arrow) arrow.textContent = "↗";
+
+        // Trigger the call application immediately on reveal
+        window.location.href = telLink;
+      } catch (_) {
+        // ignore errors
+      }
+    }, { once: true });
   });
 
   const contactForm = document.getElementById("contactForm");
