@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
       exp1_role: "Senior Technical Engineer – Aurachain",
       exp1_desc:
         "Operating the Aurachain low-code platform, troubleshooting and resolving production incidents, and implementing applications on Aurachain.",
-      exp2_period: "Feb 2022 – May 2024",
+      exp2_period: "Feb 2024 – May 2024",
       exp2_role: "Senior Technical Engineer – Oracle Romania, Bucharest",
       exp2_desc:
         "Part of the EMEA Fusion B2B Service team, covering Fusion Service Cloud components and performance issues to ensure a smooth and reliable customer experience. Worked with HCM, SCM, Finance and other Oracle Fusion Cloud applications.",
@@ -243,7 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
       exp1_role: "Senior Technical Engineer – Aurachain",
       exp1_desc:
         "Operarea platformei low-code Aurachain, rezolvarea incidentelor și implementarea aplicațiilor pe platformă.",
-      exp2_period: "Feb 2022 – Mai 2024",
+      exp2_period: "Feb 2024 – Mai 2024",
       exp2_role: "Senior Technical Engineer – Oracle România, București",
       exp2_desc:
         "Parte din echipa EMEA Fusion B2B Service, acoperind componentele Fusion Service Cloud și problemele de performanță pentru a asigura o experiență client impecabilă. Am lucrat cu HCM, SCM, Finance și alte aplicații Oracle Fusion Cloud.",
@@ -358,7 +358,7 @@ document.addEventListener("DOMContentLoaded", () => {
       exp1_role: "Senior Technical Engineer – Aurachain",
       exp1_desc:
         "Работа с low-code платформой Aurachain, устранение производственных инцидентов и внедрение приложений на Aurachain.",
-      exp2_period: "Фев 2022 – Май 2024",
+      exp2_period: "Фев 2024 – Май 2024",
       exp2_role: "Senior Technical Engineer – Oracle Romania, Бухарест",
       exp2_desc:
         "Часть команды EMEA Fusion B2B Service, отвечал за компоненты Fusion Service Cloud и вопросы производительности для обеспечения бесперебойного опыта клиентов. Работал с HCM, SCM, Finance и другими приложениями Oracle Fusion Cloud.",
